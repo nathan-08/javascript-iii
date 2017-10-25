@@ -37,7 +37,21 @@ var employees = [{
 //  3. Return the updated employee array.
 
 // Code here
-
+function employeeUpdater(){
+  //use array.map to cycle through array and execute conditionals
+  employees.map( (e, i, arr) => {
+    if (e['firstName'] === 'Theo'){
+      arr.splice(arr.indexOf(e), 1);
+    }
+    if (e['firstName'] === 'Lorie'){
+      e['department'] = 'HR';
+    }
+    
+  });
+  return employees;
+}
+employeeUpdater();
+employees
 
 
 
@@ -55,6 +69,22 @@ var employees = [{
 var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 
 // Code here
+function removeDuplicates() {
+  //remove all duplicates from workplaceAccidents array
+  var newArr = [];
+  for (var i = workplaceAccidents.length -1; i >= 0 ; i--){
+    console.log(newArr.indexOf(workplaceAccidents[i]))
+    if ((newArr.indexOf(workplaceAccidents[i]) !== -1)){      
+      console.log('x');
+      workplaceAccidents.splice(i, 1);
+    }
+    newArr.push(workplaceAccidents[i]);
+  }
+  return workplaceAccidents;
+}
+
+removeDuplicates();
+workplaceAccidents 
 
 
 
