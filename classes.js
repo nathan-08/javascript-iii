@@ -21,9 +21,19 @@ Each employee can:
 
 call your class Employee and receive all the data in the constructor in the order listed
 */
-
-
-
+class Employee {
+    constructor(fName, lName, email, age){
+        this.first_name= fName,
+        this.last_name= lName,
+        this.email= email,
+        this.age= age
+    }
+    makeWidget(){
+        return this.first_name + ' ' + this.last_name + ' ' + ' Widget';
+    }
+}
+var dave_smith = new Employee('Dave', 'Smith', 'dsmith@gmail.com', 32);
+console.log(dave_smith.makeWidget()); 
 /*
 
 Next, make a manager for Widget Co.
@@ -40,7 +50,18 @@ They can (methods) :
 call your class Manager
 
 */
-
+class Manager extends Employee {
+    // extends to borrow stuff from employee
+    constructor(){
+        this.reports = [];
+    }
+    hire(empl){
+        this.reports.push(empl);
+    }
+    fire(index){
+        this.reports.splice(index, 1);
+    }
+}
 
 
 
