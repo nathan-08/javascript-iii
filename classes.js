@@ -142,3 +142,44 @@ It can :
       It should set decrease wear_and_tear_count by 10, and set needs_reboot to false
 
 */
+class Machine {
+    constructor(){        
+    this.widgets_made_count = 0;
+    this.wear_and_tear_count = 0;
+    this.needs_reboot = false;
+    this.counter = 0;
+
+    }
+    makeWidgets(x){
+        // make sure argument is positive
+        if (x <= 0) return 'Please enter a positive number.';
+        //increase widget count by argument
+        this.widgets_made_count += x;
+        /////////////////////////////////////////////////
+        // increase wear and tear for ever 50 times run
+        this.counter += x;
+        while (this.counter >= 50){
+            this.wear_and_tear_count++;
+            this.counter -= 50;
+        }
+        //////////////////////////////////////////////////
+        
+    }        
+    
+    fixMachine(){
+        this.needs_reboot = true;
+    }
+
+    reboot(){
+        var self = this;
+        var rebootComplete = function () {
+            self.wear_and_tear_count -= 10;
+            self.needs_reboot = false;
+        }
+
+        return  rebootComplete;
+    }
+}
+
+console.log(); 
+
