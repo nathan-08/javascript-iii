@@ -117,6 +117,8 @@ var cat = {
 var grumpyActivity;
 var fluffy2ndFriend;
 
+grumpyActivity = cat.catFriends[0].activities[1];
+fluffy2ndFriend = cat.catFriends[1].name;
 
 
 
@@ -153,6 +155,9 @@ var myCar = {
 }
 
 // Code here
+function recordCleaner(){
+  myCar.accidents.forEach( e => e.atFaultForAccident = false );
+}
 
 
 
@@ -172,6 +177,16 @@ var myCar = {
 // 4. Return the modified numsArr.
 
 var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
+// 
+function looper(){
+  for(var i = 0; i< numsArr.length; i++){
+    for(var y = 0; y < numsArr[i].length; y++) {
+       (numsArr[i][y] % 2 === 0) ? numsArr[i][y] = 'even' : numsArr[i][y] = 'odd';        
+      }
+    }
+    return numsArr;
+  }
+
 
 
 
