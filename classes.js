@@ -29,7 +29,7 @@ class Employee {
         this.age= age
     }
     makeWidget(){
-        return this.first_name + ' ' + this.last_name + ' ' + ' Widget';
+        return this.first_name + ' ' + this.last_name + ' Widget';
     }
 }
 var dave_smith = new Employee('Dave', 'Smith', 'dsmith@gmail.com', 32);
@@ -52,7 +52,8 @@ call your class Manager
 */
 class Manager extends Employee {
     // extends to borrow stuff from employee
-    constructor(){
+    constructor(fName, lName, email, age){
+        super(fName, lName, email, age); //
         this.reports = [];
     }
     hire(empl){
@@ -63,6 +64,7 @@ class Manager extends Employee {
     }
 }
 
+var boss = new Manager('Bob', 'Johnson', 'bjohnson@gmail.com', 31)
 
 
 
@@ -86,6 +88,35 @@ Everytime they fire an employee they get $100 added to their bonus.
 call your class ProgressiveManager
 */
 
+class ProgressiveManager extends Manager {
+    constructor(fName, lName, email, age){
+        super(fName, lName, email, age);
+        this.title = 'Not a manager';
+        this.bonus = 0;
+        this.numEmployees = 0;
+    }
+    hire(empl){
+        this.reports.push(empl);
+        this.numEmployees++; 
+        //update title                      // note: assuming manager status is based on current total employees, not num ever hired
+        if(this.numEmployees === 0) {
+            this.title = 'Not a manager';
+        } else if(this.numEmployees < 4){
+            this.title = 'Barely Manager';
+        } else if(this.numEmployees < 11){
+            this.title = 'Mostly Manager';
+        } else if(this.numEmployees <51){
+            this.title = 'Manager';
+        } else if(this.numEmployees <101){
+            this.title = 'Manager Plus';
+        } else this.title = 'Bestest Manager';
+    }
+    fire(index){
+        this.reports.splice(index, 1);
+        this.numEmployees--;
+        this.bonus += 100;
+    }
+}
 
 
 
